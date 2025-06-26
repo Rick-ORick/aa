@@ -238,7 +238,7 @@
     <div id="modal" class="modal" style="display: none;">
      <div class="modal_content">
       <span class="close">&times;</span>
-       <p>Some Message</p>
+       <p id="message">Some Message</p>
       <button id="close">Close Message</button>
     </div>
  </td>
@@ -246,21 +246,20 @@
 		 
 <!--JS-->
 <script>
- let modalBTn = document.getElementById('open')
- let close_modal_button = document.getElementById('close')
- let modal = document.getElementById('modal')
- let xBtn = document.querySelector('.close')
- let textArea = document.getElementById('text_area')
+ let modalBTn = document.getElementById('open');
+ let close_modal_button = document.getElementById('close');
+ let modal = document.getElementById('modal');
+ let xBtn = document.querySelector('.close');
+ let messagePara = document.getElementById('message');
 
 function handleOpenModal() {
-console.log(textArea.value)
-modal.style.display = 'flex'
-textArea.value = 'hi mom'}
+messagePara.textContent = 'Hiiii';
+modal.style.display = 'flex';
 
-modalBTn.addEventListener('click', handleOpenModal)
 function handleCloseModal() {
 modal.style.display = 'none'}
 
+modalBTn.addEventListener('click', handleOpenModal)
 close_modal_button.addEventListener('click', handleCloseModal)
 xBtn.addEventListener('click', handleCloseModal)
 </script>
