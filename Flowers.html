@@ -463,7 +463,16 @@
       
       </div>
    </div>
-
+	
+<!--Modal-->
+	 <div id="modal" class="modal">
+          <div class="modal_content">
+            <span class="close">&times;</span>
+            <p id="message">Some Message</p>
+            <button id="close">Close Message</button>
+          </div>
+        </div>
+	
 <script>
     const modalBtn = document.getElementById('open');
     const closeModalButton = document.getElementById('close');
@@ -484,15 +493,5 @@
     closeModalButton.addEventListener('click', handleCloseModal);
     xBtn.addEventListener('click', handleCloseModal);
   </script>
-
-<!--Modal-->
-	 <div id="modal" class="modal">
-          <div class="modal_content">
-            <span class="close">&times;</span>
-            <p id="message">Some Message</p>
-            <button id="close">Close Message</button>
-          </div>
-        </div>
-	
 </body>
 </html>
