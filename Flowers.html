@@ -270,27 +270,6 @@
       </td>
     </tr>
   </table>
-
-  <script>
-    const modalBtn = document.getElementById('open');
-    const closeModalButton = document.getElementById('close');
-    const modal = document.getElementById('modal');
-    const xBtn = document.querySelector('.close');
-    const messagePara = document.getElementById('message');
-
-    function handleOpenModal() {
-      messagePara.textContent = 'Hi mom';
-      modal.style.display = 'flex';
-    }
-
-    function handleCloseModal() {
-      modal.style.display = 'none';
-    }
-
-    modalBtn.addEventListener('click', handleOpenModal);
-    closeModalButton.addEventListener('click', handleCloseModal);
-    xBtn.addEventListener('click', handleCloseModal);
-  </script>
 		 
 <!-- END BANNER -->
  <tr>
@@ -495,5 +474,26 @@
       </div>
    </div>
 
+<script>
+    const modalBtn = document.getElementById('open');
+    const closeModalButton = document.getElementById('close');
+    const modal = document.getElementById('modal');
+    const xBtn = document.querySelector('.close');
+    const messagePara = document.getElementById('message');
+
+    function handleOpenModal() {
+      messagePara.textContent = 'Hi mom';
+      modal.style.display = 'flex';
+    }
+
+    function handleCloseModal() {
+      modal.style.display = 'none';
+    }
+
+    modalBtn.addEventListener('click', handleOpenModal);
+    closeModalButton.addEventListener('click', handleCloseModal);
+    xBtn.addEventListener('click', handleCloseModal);
+  </script>
+	
 </body>
 </html>
