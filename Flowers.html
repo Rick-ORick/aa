@@ -255,38 +255,42 @@
    </td>
  </tr>
 
-<tr>
- <td align="center" style="padding: 20px;">
-   <button id="open">Open Message</button>
-    <div id="modal" class="modal" style="display: none;">
-     <div class="modal_content">
-      <span class="close">&times;</span>
-       <p id="message">Some Message</p>
-      <button id="close">Close Message</button>
-    </div>
- </td>
-</tr>
-		 
-<!--JS-->
-<script>
- let modalBTn = document.getElementById('open');
- let close_modal_button = document.getElementById('close');
- let modal = document.getElementById('modal');
- let xBtn = document.querySelector('.close');
- let messagePara = document.getElementById('message');
+<table>
+    <tr>
+      <td align="center" style="padding: 20px;">
+        <button id="open">Open Message</button>
 
-function handleOpenModal() {
-messagePara.textContent = 'Hiiii';
-modal.style.display = 'flex';
+        <div id="modal" class="modal">
+          <div class="modal_content">
+            <span class="close">&times;</span>
+            <p id="message">Some Message</p>
+            <button id="close">Close Message</button>
+          </div>
+        </div>
+      </td>
+    </tr>
+  </table>
 
-function handleCloseModal() {
-modal.style.display = 'none'}
+  <script>
+    const modalBtn = document.getElementById('open');
+    const closeModalButton = document.getElementById('close');
+    const modal = document.getElementById('modal');
+    const xBtn = document.querySelector('.close');
+    const messagePara = document.getElementById('message');
 
-modalBTn.addEventListener('click', handleOpenModal)
-close_modal_button.addEventListener('click', handleCloseModal)
-xBtn.addEventListener('click', handleCloseModal)
-</script>
-<!--JS-->
+    function handleOpenModal() {
+      messagePara.textContent = 'Hi mom';
+      modal.style.display = 'flex';
+    }
+
+    function handleCloseModal() {
+      modal.style.display = 'none';
+    }
+
+    modalBtn.addEventListener('click', handleOpenModal);
+    closeModalButton.addEventListener('click', handleCloseModal);
+    xBtn.addEventListener('click', handleCloseModal);
+  </script>
 		 
 <!-- END BANNER -->
  <tr>
