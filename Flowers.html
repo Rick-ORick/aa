@@ -234,15 +234,37 @@
 
 <tr>
  <td align="center" style="padding: 20px;">
-   <button id="open_modal_btn">Open Modal</button>
+   <button id="open">Open Message</button>
     <div id="modal" class="modal" style="display: none;">
      <div class="modal_content">
       <span class="close">&times;</span>
-       <p>Some text in the modal...</p>
-      <button id="close_modal_button">Close Modal</button>
+       <p>Some Message</p>
+      <button id="close">Close Message</button>
     </div>
  </td>
 </tr>
+		 
+<!--JS-->
+<script>
+ let modalBTn = document.getElementById('open')
+ let close_modal_button = document.getElementById('close')
+ let modal = document.getElementById('modal')
+ let xBtn = document.querySelector('.close')
+
+function handleOpenModal() {
+console.log(textArea.value)
+modal.style.display = 'flex'
+textArea.value = 'hi mom'}
+
+modalBTn.addEventListener('click', handleOpenModal)
+function handleCloseModal() {
+modal.style.display = 'none'}
+
+close_modal_button.addEventListener('click', handleCloseModal)
+xBtn.addEventListener('click', handleCloseModal)
+</script>
+<!--JS-->
+		 
 <!-- END BANNER -->
  <tr>
    <td style="padding: 35px 0 30px;">
