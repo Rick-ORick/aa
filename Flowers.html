@@ -259,14 +259,6 @@
     <tr>
       <td align="center" style="padding: 20px;">
         <button id="open">Open Message</button>
-
-        <div id="modal" class="modal">
-          <div class="modal_content">
-            <span class="close">&times;</span>
-            <p id="message">Some Message</p>
-            <button id="close">Close Message</button>
-          </div>
-        </div>
       </td>
     </tr>
   </table>
@@ -494,6 +486,15 @@
     closeModalButton.addEventListener('click', handleCloseModal);
     xBtn.addEventListener('click', handleCloseModal);
   </script>
+
+<!--Modal-->
+	 <div id="modal" class="modal">
+          <div class="modal_content">
+            <span class="close">&times;</span>
+            <p id="message">Some Message</p>
+            <button id="close">Close Message</button>
+          </div>
+        </div>
 	
 </body>
 </html>
