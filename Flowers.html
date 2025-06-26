@@ -133,7 +133,10 @@
       cursor: pointer;
       font-size: 20px;
     }
-
+     .opened_message {
+	     backgroundcolor: #E4201C;
+     }
+	   
       @media screen and (max-width: 599.98px) {
          .column-wrapper .padding {
             padding-right: 0 !important;
@@ -257,7 +260,7 @@
 		 
     <tr>
       <td align="center" style="padding: 20px;">
-        <button id="open">Open Message</button>
+        <button  id="open" title="Message" style="font-size: 16px; font-weight: bold; text-decoration: none; color: #ffffff; background-color: #1e5d7b; padding: 10px 25px;  border: 1px solid #1e5d7b; border-radius: 10px; display: inline-block;">Open Message</button>
       </td>
     </tr>
 		 
@@ -468,7 +471,7 @@
 	 <div id="modal" class="modal">
           <div class="modal_content">
             <span class="close">&times;</span>
-            <p id="message">Some Message</p>
+            <p id="message" class="opened_message">Some Message</p>
             <button id="close">Close Message</button>
           </div>
         </div>
