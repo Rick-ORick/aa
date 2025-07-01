@@ -356,21 +356,6 @@
 <!-- BANNER WITH GIF -->  
 <table align="center" style="border-spacing: 0; border-collapse: collapse; color: #3d3d3d; font-family: 'Lato', Arial, Helvetica, sans-serif; font-size: 16px; margin: 0 auto; padding: 0; width: 100%;" role="presentation">
  <tr>
-	 <script>
-  const images = [
-    "https://raw.githubusercontent.com/Rick-ORick/aa/refs/heads/main/InShot_20250629_141909048.jpg",
-    "https://raw.githubusercontent.com/Rick-ORick/aa/refs/heads/main/InShot_20250629_143044916.gif"
-    // Add more if needed
-  ];
-
-  let currentIndex = 0;
-  const slideImg = document.getElementById("slide-image");
-
-  setInterval(() => {
-    currentIndex = (currentIndex + 1) % images.length;
-    slideImg.src = images[currentIndex];
-  }, 5000); // changes every 5 seconds
-</script>
    <td align="center" style="padding: 20px;"><div id="slideshow" style="max-width: 600px; margin: 0 auto;"><a href="https://github.com/Rick-ORick/aa/blob/main/InShot_20250629_141738368.jpg?raw=true" target="_blank";>
    <img id="slide-image" src="https://github.com/Rick-ORick/aa/blob/main/InShot_20250602_214529593.gif?raw=true" width="600px" style="max-width: 100%; margin: 0 auto; padding: 0; width: 100%; display: block;"></a>
    <h1 style="font-family: cursive; color: #4C1C1B; padding: 50px 0 0 0; text-shadow: 
@@ -613,6 +598,21 @@
     closeModalButton.addEventListener('click', handleCloseModal);
     xBtn.addEventListener('click', handleCloseModal);
   </script>
+	 <script>
+  const images = [
+    "https://raw.githubusercontent.com/Rick-ORick/aa/refs/heads/main/InShot_20250629_141909048.jpg",
+    "https://raw.githubusercontent.com/Rick-ORick/aa/refs/heads/main/InShot_20250629_143044916.gif"
+    // Add more if needed
+  ];
+
+  let currentIndex = 0;
+  const slideImg = document.getElementById("slide-image");
+
+  setInterval(() => {
+    currentIndex = (currentIndex + 1) % images.length;
+    slideImg.src = images[currentIndex];
+  }, 5000); // changes every 5 seconds
+</script>
 <!--  MODAL FOR THE OPEN MESSAGE  -->
 </body>
 </html>
