@@ -30,6 +30,66 @@
       </noscript>
    <![endif]-->
    <style type="text/css">
+
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #333;
+      padding: 1rem 2rem;
+      color: white;
+      position: relative;
+    }
+
+    .logo {
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+
+    .nav-links {
+      display: none;
+      flex-direction: column;
+      position: absolute;
+      top: 100%;
+      right: 2rem;
+      background-color: #444;
+      padding: 1rem;
+      border-radius: 8px;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      padding: 0.5rem 0;
+    }
+
+    .hamburger {
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    /* Show the menu when active */
+    .nav-links.show {
+      display: flex;
+    }
+
+    /* Optional: show full nav on large screens */
+    @media (min-width: 768px) {
+      .hamburger {
+        display: none;
+      }
+
+      .nav-links {
+        display: flex;
+        position: static;
+        flex-direction: row;
+        gap: 1.5rem;
+        background: none;
+        padding: 0;
+      }
+    }
+	   
       table {
 			border-spacing: 0;
          border-collapse: collapse;
