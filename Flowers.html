@@ -32,35 +32,64 @@
    <style type="text/css">
 
 
-	   nav {
-  position: relative;
-  z-index: 1000;
-}
 
-.nav-links {
-  display: none;
-  flex-direction: column;
-  position: absolute;
-  top: 100%;
-  right: 2rem;
-  background-color: #fff;
-  padding: 1rem;
-  border-radius: 8px;
-  z-index: 999;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-}
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #333;
+      padding: 1rem 2rem;
+      color: white;
+      position: relative;
+    }
 
-.nav-links.show {
-  display: flex;
-}
+    .logo {
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
 
-.hamburger {
-  color: white;
-  font-size: 1.5rem;
-  cursor: pointer;
-  z-index: 1001;
-}
+    .nav-links {
+      display: none;
+      flex-direction: column;
+      position: absolute;
+      top: 100%;
+      right: 2rem;
+      background-color: #444;
+      padding: 1rem;
+      border-radius: 8px;
+    }
 
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      padding: 0.5rem 0;
+    }
+
+    .hamburger {
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    /* Show the menu when active */
+    .nav-links.show {
+      display: flex;
+    }
+
+    /* Optional: show full nav on large screens */
+    @media (min-width: 768px) {
+      .hamburger {
+        display: none;
+      }
+
+      .nav-links {
+        display: flex;
+        position: static;
+        flex-direction: row;
+        gap: 1.5rem;
+        background: none;
+        padding: 0;
+      }
+    }
 .table-wrap {
   position: relative;
   z-index: 1;
