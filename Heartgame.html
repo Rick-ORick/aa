@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Flowers For The Bee</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta property="og:title" content="Flowers For The Bee">
+  <meta property="og:description" content="A daily reminder of the eternal love I feel towards you">
+  <meta property="og:image" content="YOUR_IMAGE.png">
+  <meta property="og:url" content="https://rick-orick.github.io/aa/Flowers.html">
+  <meta property="og:type" content="website">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+
+  <style>
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('YOUR_IMAGE_URL_HERE'); /* replace this */
+      background-size: cover;
+      background-position: center;
+      filter: blur(10px);
+      z-index: -1;
+    }
+
+    body {
+      font-family: 'Lato', sans-serif;
+      background-color: #C4854D;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+
+    .page-wrapper {
+      max-width: 600px;
+      margin: 0 auto;
+      background-color: #C4854D;
+      padding-bottom: 40px;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #000;
+      padding: 1rem 2rem;
+      color: white;
+      position: relative;
+    }
+
+    .logo a {
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: white;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: none;
+      flex-direction: column;
+      position: absolute;
+      top: 100%;
+      right: 2rem;
+      background-color: #444;
+      padding: 1rem;
+      border-radius: 8px;
+      z-index: 999;
+    }
+
+    .nav-links.show {
+      display: flex;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      padding: 0.5rem 0;
+    }
+
+    .hamburger {
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    #unmuteBtn {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #000;
+  color: #dde0e1;
+  border: none;
+  padding: 12px 20px;
+  font-size: 16px;
+  font-family: 'Lato', sans-serif;
+  font-weight: bold;
+  border-radius: 30px;
+  cursor: pointer;
+  z-index: 10000;
+  opacity: 0.9;
+  transition: opacity 0.5s ease, transform 0.3s ease;
+}
+#unmuteBtn:hover {
+  opacity: 1;
+  transform: translateX(-50%) scale(1.05);
+}
+#unmuteBtn.fade-out {
+  opacity: 0;
+  pointer-events: none;
+}
+
+
+    @media (min-width: 768px) {
+      .nav-links {
+        display: flex !important;
+        position: static;
+        flex-direction: row;
+        gap: 1.5rem;
+        background: none;
+        padding: 0;
+      }
+
+      .hamburger {
+        display: none;
+      }
+    }
+
+    h1, h2, h3, h4, h5, h6, p, #message, #scoreboard {
+      font-weight: bold;
+      color: #FF0000;
+    }
+
+    #gameArea {
+      width: 400px;
+      height: 400px;
+      margin: 20px auto;
+      border: 2px dashed #fff;
+      background-color: #C4854D;
+      position: relative;
+    }
+
+    .dot {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      position: absolute;
+      display: none;
+      cursor: pointer;
+    }
+
+    #message {
+      font-size: 1.3em;
+      margin-top: 20px;
+      height: 30px;
+    }
+
+    #scoreboard {
+      font-size: 1em;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page-wrapper">
+    <nav>
+      <div class="logo">
+        <a href="https://rick-orick.github.io/aa/Flowers.html">-ˋˏ ༻❁༺ ˎˊ-</a>
+      </div>
+      <div class="hamburger" onclick="toggleMenu()">☰</div>
+      <div class="nav-links" id="navLinks">
+        <a href="https://photos.app.goo.gl/CyvrFNWWHhVvnQSF7" target="_blank">Flowers Album</a>
+        <a href="https://drive.google.com/file/d/1WnTqZG-6WM9aIJBk2ukoy4n2kFVDe0Jq/view?usp=drive_link" target="_blank">In Love With A Flower</a>
+        <a href="https://drive.google.com/file/d/1MIWPirtP5DXfHl1pbnMLeWu9Y70vWG2o/view?usp=drive_link" target="_blank">Flower Waltz</a>
+      </div>
+    </nav>
+
+             <table align="center" style="background:https://github.com/Rick-ORick/aa/blob/main/Gp67syWb0AAXLsv.jpeg?raw=true; border-spacing:0; border-collapse: collapse; color:#3d3d3d; font-family: 'Lato', Arial, Helvetica, sans-serif; font-size: 16px; margin: 0 auto; padding:0; width: 100%; max-width: 600px;" role="presentation">
+  <tr>
+   <td style="padding: 0;">
+	   <table width="100%" style="border-spacing: 0;" role="presentation">
+
+          <tr>
+            <td class="darkmode-bg" style="background-color: rgb(196, 133, 77); padding: 20px 0; text-align: center; position: relative; z-index: 0;"><a href="https://github.com/Rick-ORick/aa/blob/main/503865889_18358548409197997_3371045495542853326_n.jpg?raw=true" target="_blank">
+               <div><i class="fa-solid fa-heart fa-beat" alt="My heart (can be yours)" style="--fa-animation-duration: 0.8s; font-size:100px; color: red;"></i></div>
+               </a>
+	     </td>
+          </tr>
+
+    <h1>So, can you guess the image?</h1>
+    <h1>Click to draw:</h1>
+    <div id="gameArea"></div>
+    <div id="message"></div>
+    <div id="scoreboard"></div>
+  </div>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById('navLinks').classList.toggle('show');
+    }
+
+    const gameArea = document.getElementById('gameArea');
+    const message = document.getElementById('message');
+    const scoreboard = document.getElementById('scoreboard');
+
+    const images = [
+      {
+        name: 'flower',
+        color: '#ffb6c1',
+        points: [
+          [200, 150], [170, 120], [200, 90], [230, 120], [200, 150], [200, 210], [200, 270]
+        ],
+        endMessage: "It’s a pretty flower like you! 🌸"
+      },
+      {
+        name: 'teddy',
+        color: '#b5651d',
+        points: [
+          [180, 100], [220, 100], [200, 130], [170, 160], [230, 160], [200, 190], [200, 240]
+        ],
+        endMessage: "It’s your teddy bear, Honey Bee! 🧸"
+      },
+      {
+        name: 'heart',
+        color: '#ff0000',
+        points: [
+          [200, 120], [180, 100], [160, 120], [160, 160], [200, 200], [240, 160], [240, 120], [220, 100], [200, 120]
+        ],
+        endMessage: "It’s my heart. Take it! It belongs to you! ❤️"
+      }
+    ];
+
+    let currentLevel = 0;
+    let currentDotIndex = 0;
+    let dots = [];
+    let startTime;
+    const times = [];
+
+    function createDot(x, y) {
+      const dot = document.createElement('div');
+      dot.classList.add('dot');
+      dot.style.left = `${x - 10}px`;
+      dot.style.top = `${y - 10}px`;
+
+      // Set the dot color for current level
+      const currentColor = images[currentLevel].color;
+      dot.style.backgroundColor = currentColor;
+
+      dot.addEventListener('click', () => {
+        dot.style.display = 'block';
+        dot.style.pointerEvents = 'none';
+
+        currentDotIndex++;
+        if (currentDotIndex < images[currentLevel].points.length) {
+          showNextDot();
+        } else {
+          const endTime = Date.now();
+          const reactionTime = Math.round((endTime - startTime) / 1000);
+          times.push(reactionTime);
+          message.textContent = images[currentLevel].endMessage;
+
+          currentLevel++;
+          if (currentLevel < images.length) {
+            setTimeout(() => {
+              clearDots();
+              startLevel();
+            }, 2000);
+          } else {
+            setTimeout(() => {
+              const totalTime = times.reduce((a, b) => a + b);
+              message.textContent = "You wooooooon! I’m proud of you, my baby girl! 🎉";
+
+              const bestTime = localStorage.getItem('bestTime');
+              if (!bestTime || totalTime < bestTime) {
+                localStorage.setItem('bestTime', totalTime);
+              }
+
+              scoreboard.innerHTML += `<br><strong>Total Time: ${totalTime}s</strong>`;
+              const stored = localStorage.getItem('bestTime');
+              scoreboard.innerHTML += `<br><strong>Your Best Time: ${stored}s</strong>`;
+            }, 2000);
+          }
+
+          scoreboard.innerHTML += `<div>Level ${currentLevel}: ${reactionTime}s</div>`;
+        }
+      });
+
+      gameArea.appendChild(dot);
+      dots.push(dot);
+    }
+
+    function showNextDot() {
+      const [x, y] = images[currentLevel].points[currentDotIndex];
+      dots[currentDotIndex].style.display = 'block';
+    }
+
+    function startLevel() {
+      message.textContent = '';
+      currentDotIndex = 0;
+      dots = [];
+
+      const points = images[currentLevel].points;
+      points.forEach(([x, y]) => createDot(x, y));
+
+      showNextDot();
+      startTime = Date.now();
+    }
+
+    function clearDots() {
+      dots.forEach(dot => dot.remove());
+    }
+
+    const storedBest = localStorage.getItem('bestTime');
+    if (storedBest) {
+      scoreboard.innerHTML = `<strong>Best Time so far: ${storedBest}s</strong>`;
+    }
+
+    startLevel();
+  </script>
+
+<button id="unmuteBtn">🔊 Better experienced with sound</button>
+<audio id="backgroundMusic" src="YOUR_AUDIO.mp3" loop autoplay muted></audio>
+
+<script>
+  const audio = document.getElementById('backgroundMusic');
+  const btn = document.getElementById('unmuteBtn');
+
+  btn.addEventListener('click', () => {
+    audio.muted = false;
+    audio.play().catch(() => {});
+    btn.classList.add('fade-out');
+    setTimeout(() => btn.remove(), 1000);
+  });
+</script>
+
+
+</body>
+</html>
