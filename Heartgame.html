@@ -87,32 +87,33 @@
     }
 
     #unmuteBtn {
-  position: fixed;
-  bottom: 30px;
-  left: 50%;
-  transform: translateX(-50%);
-  background-color: #000;
-  color: #dde0e1;
-  border: none;
-  padding: 12px 20px;
-  font-size: 16px;
-  font-family: 'Lato', sans-serif;
-  font-weight: bold;
-  border-radius: 30px;
-  cursor: pointer;
-  z-index: 10000;
-  opacity: 0.9;
-  transition: opacity 0.5s ease, transform 0.3s ease;
-}
-#unmuteBtn:hover {
-  opacity: 1;
-  transform: translateX(-50%) scale(1.05);
-}
-#unmuteBtn.fade-out {
-  opacity: 0;
-  pointer-events: none;
-}
+      position: fixed;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #000;
+      color: #dde0e1;
+      border: none;
+      padding: 12px 20px;
+      font-size: 16px;
+      font-family: 'Lato', sans-serif;
+      font-weight: bold;
+      border-radius: 30px;
+      cursor: pointer;
+      z-index: 10000;
+      opacity: 0.9;
+      transition: opacity 0.5s ease, transform 0.3s ease;
+    }
 
+    #unmuteBtn:hover {
+      opacity: 1;
+      transform: translateX(-50%) scale(1.05);
+    }
+
+    #unmuteBtn.fade-out {
+      opacity: 0;
+      pointer-events: none;
+    }
 
     @media (min-width: 768px) {
       .nav-links {
@@ -160,7 +161,8 @@
 
     #scoreboard {
       font-size: 1em;
-      margin-top: 10px;
+      margin-top: 20px;
+      min-height: 80px;
     }
   </style>
 </head>
@@ -179,23 +181,33 @@
       </div>
     </nav>
 
-             <table align="center" style="background:https://github.com/Rick-ORick/aa/blob/main/Gp67syWb0AAXLsv.jpeg?raw=true; border-spacing:0; border-collapse: collapse; color:#3d3d3d; font-family: 'Lato', Arial, Helvetica, sans-serif; font-size: 16px; margin: 0 auto; padding:0; width: 100%; max-width: 600px;" role="presentation">
-  <tr>
-   <td style="padding: 0;">
-	   <table width="100%" style="border-spacing: 0;" role="presentation">
+    <!-- Centered Heart Table -->
+    <table align="center" style="background: url('https://github.com/Rick-ORick/aa/blob/main/Gp67syWb0AAXLsv.jpeg?raw=true'); background-size: cover; border-spacing: 0; border-collapse: collapse; color:#3d3d3d; font-family: 'Lato', Arial, Helvetica, sans-serif; font-size: 16px; margin: 0 auto; padding: 0; width: 100%; max-width: 600px;" role="presentation">
+      <tr>
+        <td style="padding: 0;">
+          <table width="100%" style="border-spacing: 0;" role="presentation">
+            <tr>
+              <td class="darkmode-bg" style="background-color: rgb(196, 133, 77); padding: 20px 0; text-align: center; position: relative; z-index: 0;">
+                <a href="https://github.com/Rick-ORick/aa/blob/main/503865889_18358548409197997_3371045495542853326_n.jpg?raw=true" target="_blank">
+                  <div>
+                    <i class="fa-solid fa-heart fa-beat" style="--fa-animation-duration: 0.8s; font-size:100px; color: red;"></i>
+                  </div>
+                </a>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
 
-          <tr>
-            <td class="darkmode-bg" style="background-color: rgb(196, 133, 77); padding: 20px 0; text-align: center; position: relative; z-index: 0;"><a href="https://github.com/Rick-ORick/aa/blob/main/503865889_18358548409197997_3371045495542853326_n.jpg?raw=true" target="_blank">
-               <div><i class="fa-solid fa-heart fa-beat" alt="My heart (can be yours)" style="--fa-animation-duration: 0.8s; font-size:100px; color: red;"></i></div>
-               </a>
-	     </td>
-          </tr>
-
-    <h1>So, can you guess the image?</h1>
-    <h1>Click to draw:</h1>
-    <div id="gameArea"></div>
-    <div id="message"></div>
-    <div id="scoreboard"></div>
+    <!-- Game Section Centered -->
+    <div style="text-align: center; max-width: 600px; margin: 0 auto;">
+      <h1>So, can you guess the image?</h1>
+      <h1>Click to draw:</h1>
+      <div id="gameArea"></div>
+      <div id="message"></div>
+      <div id="scoreboard"></div>
+    </div>
   </div>
 
   <script>
@@ -246,7 +258,6 @@
       dot.style.left = `${x - 10}px`;
       dot.style.top = `${y - 10}px`;
 
-      // Set the dot color for current level
       const currentColor = images[currentLevel].color;
       dot.style.backgroundColor = currentColor;
 
@@ -322,21 +333,19 @@
     startLevel();
   </script>
 
-<button id="unmuteBtn">🔊 Better experienced with sound</button>
-<audio id="backgroundMusic" src="Loop[3829506].wav" loop autoplay muted></audio>
+  <button id="unmuteBtn">🔊 Better experienced with sound</button>
+  <audio id="backgroundMusic" src="Loop[3829506].wav" loop autoplay muted></audio>
 
-<script>
-  const audio = document.getElementById('backgroundMusic');
-  const btn = document.getElementById('unmuteBtn');
+  <script>
+    const audio = document.getElementById('backgroundMusic');
+    const btn = document.getElementById('unmuteBtn');
 
-  btn.addEventListener('click', () => {
-    audio.muted = false;
-    audio.play().catch(() => {});
-    btn.classList.add('fade-out');
-    setTimeout(() => btn.remove(), 1000);
-  });
-</script>
-
-
+    btn.addEventListener('click', () => {
+      audio.muted = false;
+      audio.play().catch(() => {});
+      btn.classList.add('fade-out');
+      setTimeout(() => btn.remove(), 1000);
+    });
+  </script>
 </body>
 </html>
