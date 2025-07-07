@@ -131,7 +131,7 @@
 
     h1, h2, h3, h4, h5, h6, p, #message, #scoreboard {
       font-weight: bold;
-      color: #8B0000; /* Soft dark red */
+      color: #8B0000;
     }
 
     #gameArea {
@@ -151,6 +151,33 @@
       display: none;
       cursor: pointer;
     }
+
+    @keyframes pulseGlow {
+  0% {
+    box-shadow: 0 0 0px rgba(255, 255, 255, 0.5);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 12px rgba(255, 255, 255, 0.8);
+    transform: scale(1.1);
+  }
+  100% {
+    box-shadow: 0 0 0px rgba(255, 255, 255, 0.5);
+    transform: scale(1);
+  }
+}
+
+.dot {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  position: absolute;
+  display: none;
+  cursor: pointer;
+  animation: pulseGlow 1.5s infinite ease-in-out;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
 
     #message {
       font-size: 1.3em;
@@ -180,24 +207,6 @@
       </div>
     </nav>
 
-    <table align="center" style="background: url('https://github.com/Rick-ORick/aa/blob/main/Gp67syWb0AAXLsv.jpeg?raw=true'); background-size: cover; border-spacing: 0; border-collapse: collapse; color:#3d3d3d; font-family: 'Lato', Arial, Helvetica, sans-serif; font-size: 16px; margin: 0 auto; padding: 0; width: 100%; max-width: 600px;" role="presentation">
-      <tr>
-        <td style="padding: 0;">
-          <table width="100%" style="border-spacing: 0;" role="presentation">
-            <tr>
-              <td class="darkmode-bg" style="background-color: #F5E3C8; padding: 20px 0; text-align: center; position: relative; z-index: 0;">
-                <a href="https://g.co/kgs/qpSnw18" target="_blank">
-                  <div>
-                    <i class="fa-solid fa-heart fa-beat" style="--fa-animation-duration: 0.8s; font-size:100px; color: red;"></i>
-                  </div>
-                </a>
-              </td>
-            </tr>
-          </table>
-        </td>
-      </tr>
-    </table>
-
     <div style="text-align: center; max-width: 600px; margin: 0 auto;">
       <h1>So, can you guess the image?</h1>
       <h1>Click to draw:</h1>
@@ -207,6 +216,12 @@
     </div>
   </div>
 
+  <!-- Audio Elements -->
+  <button id="unmuteBtn">🔊 Better experienced with sound</button>
+  <audio id="backgroundMusic" src="Loop[3829506].wav" loop autoplay muted></audio>
+  <audio id="clickSound" src="select.mp3" preload="auto"></audio>
+  <audio id="congratsSound" src="congrats.mp3" preload="auto"></audio>
+
   <script>
     function toggleMenu() {
       document.getElementById('navLinks').classList.toggle('show');
@@ -215,30 +230,35 @@
     const gameArea = document.getElementById('gameArea');
     const message = document.getElementById('message');
     const scoreboard = document.getElementById('scoreboard');
+    const bgMusic = document.getElementById('backgroundMusic');
+    const clickSound = document.getElementById('clickSound');
+    const congratsSound = document.getElementById('congratsSound');
+    const unmuteBtn = document.getElementById('unmuteBtn');
+
+    unmuteBtn.addEventListener('click', () => {
+      bgMusic.muted = false;
+      bgMusic.play().catch(() => {});
+      unmuteBtn.classList.add('fade-out');
+      setTimeout(() => unmuteBtn.remove(), 1000);
+    });
 
     const images = [
       {
         name: 'flower',
         color: '#ffb6c1',
-        points: [
-          [200, 150], [170, 120], [200, 90], [230, 120], [200, 150], [200, 210], [200, 270]
-        ],
+        points: [[200, 150], [170, 120], [200, 90], [230, 120], [200, 150], [200, 210], [200, 270]],
         endMessage: "It’s a pretty flower like you! 🌸"
       },
       {
         name: 'teddy',
         color: '#b5651d',
-        points: [
-          [180, 100], [220, 100], [200, 130], [170, 160], [230, 160], [200, 190], [200, 240]
-        ],
+        points: [[180, 100], [220, 100], [200, 130], [170, 160], [230, 160], [200, 190], [200, 240]],
         endMessage: "It’s your teddy bear, Honey Bee! 🧸"
       },
       {
         name: 'heart',
         color: '#ff0000',
-        points: [
-          [200, 120], [180, 100], [160, 120], [160, 160], [200, 200], [240, 160], [240, 120], [220, 100], [200, 120]
-        ],
+        points: [[200, 120], [180, 100], [160, 120], [160, 160], [200, 200], [240, 160], [240, 120], [220, 100], [200, 120]],
         endMessage: "It’s my heart. Take it! It belongs to you! ❤️"
       }
     ];
@@ -262,6 +282,9 @@
         dot.style.display = 'block';
         dot.style.pointerEvents = 'none';
 
+        clickSound.currentTime = 0;
+        clickSound.play();
+
         currentDotIndex++;
         if (currentDotIndex < images[currentLevel].points.length) {
           showNextDot();
@@ -281,6 +304,7 @@
             setTimeout(() => {
               const totalTime = times.reduce((a, b) => a + b);
               message.textContent = "You wooooooon! I’m proud of you, my baby girl! 🎉";
+              congratsSound.play();
 
               const bestTime = localStorage.getItem('bestTime');
               if (!bestTime || totalTime < bestTime) {
@@ -328,21 +352,6 @@
     }
 
     startLevel();
-  </script>
-
-  <button id="unmuteBtn">🔊 Better experienced with sound</button>
-  <audio id="backgroundMusic" src="Loop[3829506].wav" loop autoplay muted></audio>
-
-  <script>
-    const audio = document.getElementById('backgroundMusic');
-    const btn = document.getElementById('unmuteBtn');
-
-    btn.addEventListener('click', () => {
-      audio.muted = false;
-      audio.play().catch(() => {});
-      btn.classList.add('fade-out');
-      setTimeout(() => btn.remove(), 1000);
-    });
   </script>
 </body>
 </html>
