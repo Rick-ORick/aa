@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en" dir="ltr" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
 <head>
@@ -229,57 +230,6 @@
      #slide-image {
      transition: opacity 0.5s ease-in-out;
      }
-
-        body {
-      margin: 0;
-      padding: 0;
-      background: url('https://raw.githubusercontent.com/Rick-ORick/aa/main/Gp67syWb0AAXLsv.jpeg') no-repeat center center fixed;
-      background-size: cover;
-      font-family: 'Lato', sans-serif;
-    }
-
-    #loading {
-      position: fixed;
-      background: #000;
-      color: #C8BDA0;
-      font-size: 24px;
-      font-family: 'Special Elite', monospace;
-      top: 0; left: 0;
-      width: 100%;
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 10000;
-      transition: opacity 1s ease;
-    }
-
-    #flashlight {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      background: radial-gradient(circle at 0% 50%, transparent 100px, rgba(0, 0, 0, 1) 160px);
-      background-repeat: no-repeat;
-      background-size: cover;
-      pointer-events: none;
-      z-index: 9999;
-      animation: flashlightSequence 6s ease-out forwards;
-    }
-
-    @keyframes flashlightSequence {
-      0%   { opacity: 0; }
-      5%   { opacity: 1; background-position: 0% 50%; }
-      7%   { opacity: 0; }
-      9%   { opacity: 1; }
-      11%  { opacity: 0; }
-      13%  { opacity: 1; }
-      35%  { background-position: 100% 50%; }
-      55%  { background-position: 50% 0%; }
-      75%  { background-position: 50% 100%; }
-      100% { background-position: 50% 50%; }
-    }
 	   
       @media screen and (max-width: 599.98px) {
          .column-wrapper .padding {
@@ -333,8 +283,6 @@
 </head>
 <!-- Old background-color dde0e1 -->
 <body class="body" xml:lang="en" style="margin:0;padding:0;min-width:100%; background: url('https://raw.githubusercontent.com/Rick-ORick/aa/main/Gp67syWb0AAXLsv.jpeg') no-repeat center center fixed; background-size: cover;">
-    <div id="loading">LOADING...</div>
-  <div id="flashlight"></div>
 
    <div style="width: 100%; table-layout:fixed; color:#3d3d3d; font-family: 'Lato', Arial, Helvetica, sans-serif; font-size: 16px; margin: 0 auto 40px;">
       <div style="max-width: 600px; font-family: 'Lato', Arial, Helvetica, sans-serif; font-size: 16px; box-shadow: 0 0 10px rgba(0, 0, 0, .2);margin: 0 auto;">
@@ -673,32 +621,5 @@
   }, 5000); // changes every 5 seconds
 </script>
 <!--  MODAL FOR THE OPEN MESSAGE  -->
-  <script>
-    // Fade out loading after 2 seconds
-    window.addEventListener('load', () => {
-      setTimeout(() => {
-        const loading = document.getElementById('loading');
-        loading.style.opacity = '0';
-        setTimeout(() => {
-          loading.style.display = 'none';
-        }, 1000);
-      }, 2000);
-    });
-
-    // Start flashlight follow after animation
-    setTimeout(() => {
-      const flashlight = document.getElementById("flashlight");
-      flashlight.style.animation = "none";
-
-      window.addEventListener("scroll", () => {
-        const scrollY = window.scrollY;
-        const centerX = window.innerWidth / 2;
-        const centerY = window.innerHeight / 2;
-        const offsetY = centerY + (scrollY / 2);
-        flashlight.style.background = `radial-gradient(circle at ${centerX}px ${offsetY}px, transparent 100px, rgba(0,0,0,1) 160px)`;
-      });
-    }, 8000);
-  </script>
-
 </body>
 </html>
