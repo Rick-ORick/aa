@@ -2,24 +2,26 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Flashlight Fixed</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Flowers For The Bee</title>
   <style>
-    html, body {
+    body {
       margin: 0;
       padding: 0;
-      height: 100%;
-      background: black;
-      overflow-x: hidden;
+      background: url('https://raw.githubusercontent.com/Rick-ORick/aa/main/Gp67syWb0AAXLsv.jpeg') no-repeat center center fixed;
+      background-size: cover;
+      font-family: 'Lato', sans-serif;
     }
 
     #loading {
       position: fixed;
-      top: 0; left: 0;
-      width: 100vw; height: 100vh;
-      background: black;
+      background: #000;
       color: #C8BDA0;
-      font-size: 2rem;
+      font-size: 24px;
+      font-family: 'Special Elite', monospace;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -33,34 +35,25 @@
       left: 0;
       width: 100vw;
       height: 100vh;
-      background: rgba(0,0,0,1);
+      background: radial-gradient(circle at 0% 50%, transparent 100px, rgba(0, 0, 0, 1) 160px);
+      background-repeat: no-repeat;
+      background-size: cover;
       pointer-events: none;
       z-index: 9999;
+      animation: flashlightSequence 6s ease-out forwards;
     }
 
-    #flashlight::before {
-      content: "";
-      position: absolute;
-      top: 0; left: 0;
-      width: 100vw;
-      height: 100vh;
-      background: radial-gradient(circle, transparent 100px, black 160px);
-      transform: translate(0, 50%);
-      animation: flashlightMove 6s ease-out forwards;
-    }
-
-    @keyframes flashlightMove {
-      0%, 3%   { opacity: 0; }
-      4%       { opacity: 1; }
-      6%       { opacity: 0; }
-      8%       { opacity: 1; }
-      10%      { opacity: 0; }
-      12%      { opacity: 1; }
-      20%      { transform: translate(0%, 50%); }
-      40%      { transform: translate(100vw, 50%); }
-      60%      { transform: translate(50vw, 0%); }
-      80%      { transform: translate(50vw, 100%); }
-      100%     { transform: translate(50vw, 50%); }
+    @keyframes flashlightSequence {
+      0%   { opacity: 0; }
+      5%   { opacity: 1; background-position: 0% 50%; }
+      7%   { opacity: 0; }
+      9%   { opacity: 1; }
+      11%  { opacity: 0; }
+      13%  { opacity: 1; }
+      35%  { background-position: 100% 50%; }
+      55%  { background-position: 50% 0%; }
+      75%  { background-position: 50% 100%; }
+      100% { background-position: 50% 50%; }
     }
   </style>
 </head>
@@ -69,29 +62,30 @@
   <div id="flashlight"></div>
 
   <script>
-    // Hide loading screen after 2s
+    // Fade out loading after 2 seconds
     window.addEventListener('load', () => {
       setTimeout(() => {
-        document.getElementById('loading').style.opacity = '0';
+        const loading = document.getElementById('loading');
+        loading.style.opacity = '0';
         setTimeout(() => {
-          document.getElementById('loading').style.display = 'none';
+          loading.style.display = 'none';
         }, 1000);
       }, 2000);
     });
 
-    // After animation ends, enable scroll tracking for flashlight
+    // Start flashlight follow after animation
     setTimeout(() => {
-      const flashlight = document.querySelector('#flashlight::before'); // pseudo-elements can't be selected, so instead:
-      const overlay = document.querySelector('#flashlight');
+      const flashlight = document.getElementById("flashlight");
+      flashlight.style.animation = "none";
 
       window.addEventListener("scroll", () => {
         const scrollY = window.scrollY;
         const centerX = window.innerWidth / 2;
         const centerY = window.innerHeight / 2;
         const offsetY = centerY + (scrollY / 2);
-        overlay.style.background = `radial-gradient(circle at ${centerX}px ${offsetY}px, transparent 100px, black 160px)`;
+        flashlight.style.background = `radial-gradient(circle at ${centerX}px ${offsetY}px, transparent 100px, rgba(0,0,0,1) 160px)`;
       });
-    }, 7000); // after animation ends
+    }, 8000);
   </script>
 </body>
 </html>
