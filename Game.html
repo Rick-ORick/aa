@@ -11,44 +11,14 @@
       padding: 0;
       font-family: 'Special Elite', monospace;
       overflow-x: hidden;
-      background: black;
       color: white;
     }
 
     body {
-      min-height: 320vh;
+      min-height: 500vh;
       position: relative;
-    }
-
-    /* Background Image with dark overlay */
-    body::before {
-      content: "";
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -3;
-      background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
-                  url('https://raw.githubusercontent.com/Rick-ORick/aa/main/Gp67syWb0AAXLsv.jpeg') no-repeat center center fixed;
+      background: url('https://github.com/Rick-ORick/aa/blob/main/bbd.jpeg?raw=true') no-repeat center center fixed;
       background-size: cover;
-    }
-
-    /* Fog Layer */
-    .fog {
-      pointer-events: none;
-      position: fixed;
-      top: 0; left: 0;
-      width: 200%;
-      height: 200%;
-      background: url('https://i.ibb.co/8xwXZFt/fog.png') repeat;
-      opacity: 0.1;
-      animation: fogMove 60s linear infinite;
-      z-index: -2;
-    }
-
-    @keyframes fogMove {
-      0% { transform: translate(0, 0); }
-      100% { transform: translate(-50%, -50%); }
     }
 
     #loading {
@@ -56,7 +26,6 @@
       background: #000;
       color: #C8BDA0;
       font-size: 24px;
-      font-family: 'Special Elite', monospace;
       top: 0; left: 0;
       width: 100%;
       height: 100%;
@@ -70,7 +39,8 @@
     #overlay {
       pointer-events: none;
       position: fixed;
-      top: 0; left: 0;
+      top: 0;
+      left: 0;
       width: 100vw;
       height: 100vh;
       z-index: 9998;
@@ -119,9 +89,9 @@
       width: 100vw;
       height: 100vh;
       background-color: rgba(0, 0, 0, 0.95);
-      display: flex;
       align-items: center;
       justify-content: center;
+      flex-direction: column;
     }
 
     .modal img {
@@ -140,55 +110,173 @@
       font-weight: bold;
       z-index: 11001;
     }
+
+    .password-inputs input {
+      width: 40px;
+      height: 40px;
+      font-size: 24px;
+      text-align: center;
+      margin: 0 5px;
+      background: transparent;
+      color: #00ff88;
+      border: 2px solid #00ff88;
+      outline: none;
+    }
+
+    .hidden-image {
+      display: none;
+      text-align: center;
+      margin-top: 40px;
+    }
+
+    .hidden-image img {
+      width: 90px;
+      height: auto;
+    }
+
+    #doorSection {
+      display: none;
+    }
+
+    #soundPrompt {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 20000;
+      background: rgba(0, 0, 0, 0.85);
+      color: #00ff88;
+      padding: 10px 20px;
+      font-size: 16px;
+      border: 1px solid #00ff88;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: opacity 1s ease;
+    }
   </style>
 </head>
-<body class="body" xml:lang="en">
+<body class="body" xml:lang="en" onload="window.scrollTo(0, 300);">
+  <audio id="bgMusic" src="back.mp3" loop></audio>
+  <div id="soundPrompt">🔊 Better experienced with sound — Click to unmute</div>
 
-  <!-- Fog -->
-  <div class="fog"></div>
-
-  <!-- Loading Screen -->
   <div id="loading">LOADING...</div>
-
-  <!-- Flashlight Overlay -->
   <div id="overlay"></div>
 
-  <!-- Invisible Scroll Padding -->
   <div class="invisible-space">
-    <table>
-      <tr><td>
-        <br><br><br><br><br><br><br><br><br><br>
-        <br><br><br><br><br><br><br><br><br><br>
-        <br><br><br><br><br><br><br><br><br><br>
-      </td></tr>
-    </table>
+    <table><tr><td>
+      <br><br><br><br><br><br><br><br><br><br>
+      <br><br><br><br><br><br><br><br><br><br>
+      <br><br><br><br><br><br><br><br><br><br>
+    </td></tr></table>
   </div>
 
-  <!-- Title Section -->
   <div class="centered-section">
     <h1>...Where am I?</h1>
     <span class="green-hint">*Scroll slowly to explore*</span>
   </div>
 
-  <!-- Crumpled Paper -->
   <div class="paper-container">
     <img src="cr.png" alt="Crumpled Note" id="openNote">
+    <audio id="wrapSound" src="wrap.mp3"></audio>
   </div>
 
-  <!-- Below Paper Text -->
   <div class="centered-section">
     <h1>Oh what's this?</h1>
     <span class="green-hint">*Grab it? Yes or no?*</span>
   </div>
 
-  <!-- Modal for Opened Note -->
   <div class="modal" id="noteModal">
     <span class="modal-close" id="closeNote">&times;</span>
     <div id="noteContent"></div>
   </div>
 
+  <div class="modal" id="bookModal">
+    <span class="modal-close" id="closeBook">&times;</span>
+    <div id="bookContent"></div>
+  </div>
+
+  <div class="paper-container">
+    <img src="p.png" alt="Phone" id="phone">
+  </div>
+
+  <div class="centered-section">
+    <h1>Oh, a phone...</h1>
+    <span class="green-hint">*Pick it up? Yes or no?*</span>
+    <h1 id="phoneMessage" style="display:none;">This is not a normal phone...</h1>
+  </div>
+
+  <div class="modal" id="phoneModal">
+    <div class="password-inputs">
+      <input type="text" maxlength="1" class="digit">
+      <input type="text" maxlength="1" class="digit">
+      <input type="text" maxlength="1" class="digit">
+      <input type="text" maxlength="1" class="digit">
+    </div>
+    <label style="color: #00ff88; margin-top: 20px;">Insert your password</label>
+  </div>
+
+  <div class="paper-container">
+    <img src="book.png" alt="Book" id="book" onclick="document.getElementById('collectSound').play()">
+    <audio id="collectSound" src="collect.mp3"></audio>
+  </div>
+  <div class="centered-section">
+    <h1>Oh look...</h1>
+    <span class="green-hint">Click to collect? Yes or no?</span>
+  </div>
+
+  <div class="paper-container">
+    <img src="calender.png" alt="Calendar" onclick="document.getElementById('collectSound').play()">
+  </div>
+  <div class="centered-section">
+    <span class="green-hint">Click to collect? Yes or no?</span>
+  </div>
+
+  <div class="paper-container">
+    <img src="cd.png" alt="CD" onclick="document.getElementById('collectSound').play()">
+  </div>
+  <div class="centered-section">
+    <h2>Oh, a CD from a band called remember. The title is "When I First Met You"</h2>
+    <span class="green-hint">Click to collect? Yes or no?</span>
+  </div>
+
+  <div class="paper-container">
+    <img src="beetoy.png" alt="Bee Toy" onclick="document.getElementById('collectSound').play()">
+  </div>
+  <div class="centered-section">
+    <span class="green-hint">Click to collect? Yes or no?</span>
+  </div>
+
+  <div class="paper-container">
+    <img src="player.png" alt="CD Player" onclick="document.getElementById('wrongSound').play(); document.getElementById('playerMessage').style.display='block';">
+  </div>
+  <div class="centered-section">
+    <span class="green-hint">Click to insert CD? Yes or no?</span>
+    <h2 id="playerMessage" style="display:none;">The cd player isn’t working. Maybe I should retrace my steps.</h2>
+  </div>
+
+  <div class="invisible-space">
+    <table><tr><td>
+      <br><br><br><br><br><br><br><br><br><br>
+      <br><br><br><br><br><br><br><br><br><br>
+    </td></tr></table>
+  </div>
+
+  <div id="doorSection">
+    <div class="paper-container">
+      <a href="Flowers.html" target="_blank">
+        <img src="door.png" alt="Door">
+      </a>
+    </div>
+    <div class="centered-section">
+      <h2>This door wasn’t here before...</h2>
+      <span class="green-hint">Go in? Yes or no?</span>
+    </div>
+  </div>
+
+  <audio id="wrongSound" src="wrong.mp3"></audio>
+  <audio id="rightSound" src="right.mp3"></audio>
+
   <script>
-    // Loading screen
     window.addEventListener('load', () => {
       setTimeout(() => {
         const loading = document.getElementById('loading');
@@ -199,7 +287,6 @@
       }, 4000);
     });
 
-    // Flashlight centered logic
     const overlay = document.getElementById('overlay');
     function updateFlashlight() {
       const centerX = window.innerWidth / 2;
@@ -210,13 +297,13 @@
     window.addEventListener('scroll', updateFlashlight);
     window.addEventListener('resize', updateFlashlight);
 
-    // Modal logic
     const openNote = document.getElementById('openNote');
     const noteModal = document.getElementById('noteModal');
     const closeNote = document.getElementById('closeNote');
     const noteContent = document.getElementById('noteContent');
 
     openNote.addEventListener('click', () => {
+      document.getElementById('wrapSound').play();
       noteContent.innerHTML = `<img src="cr-open.png" alt="Opened Note">`;
       noteModal.style.display = 'flex';
     });
@@ -232,8 +319,80 @@
         noteContent.innerHTML = '';
       }
     });
-  </script>
 
+    const phone = document.getElementById('phone');
+    const phoneModal = document.getElementById('phoneModal');
+    const digits = document.querySelectorAll('.digit');
+    const wrongSound = document.getElementById('wrongSound');
+    const rightSound = document.getElementById('rightSound');
+
+    phone.addEventListener('click', () => {
+      phoneModal.style.display = 'flex';
+      digits[0].focus();
+      document.getElementById('phoneMessage').style.display = 'block';
+    });
+
+    digits.forEach((input, index) => {
+      input.addEventListener('input', () => {
+        if (input.value.length === 1 && index < digits.length - 1) {
+          digits[index + 1].focus();
+        }
+
+        const entered = Array.from(digits).map(d => d.value).join('');
+        if (entered.length === 4) {
+          if (entered === '0110') {
+            document.getElementById('doorSection').style.display = 'block';
+            rightSound.play();
+            phoneModal.style.display = 'none';
+          } else {
+            digits.forEach(d => d.value = '');
+            digits[0].focus();
+            wrongSound.play();
+          }
+        }
+      });
+    });
+
+    phoneModal.addEventListener('click', (e) => {
+      if (e.target === phoneModal) phoneModal.style.display = 'none';
+    });
+
+    const book = document.getElementById('book');
+    const bookModal = document.getElementById('bookModal');
+    const closeBook = document.getElementById('closeBook');
+    const bookContent = document.getElementById('bookContent');
+
+    book.addEventListener('click', () => {
+      document.getElementById('collectSound').play();
+      bookContent.innerHTML = `<img src="open-book.png" alt="Opened Book">`;
+      bookModal.style.display = 'flex';
+    });
+
+    closeBook.addEventListener('click', () => {
+      bookModal.style.display = 'none';
+      bookContent.innerHTML = '';
+    });
+
+    window.addEventListener('click', (e) => {
+      if (e.target === bookModal) {
+        bookModal.style.display = 'none';
+        bookContent.innerHTML = '';
+      }
+    });
+
+    // Fix for background music autoplay
+    const bgMusic = document.getElementById('bgMusic');
+    const soundPrompt = document.getElementById('soundPrompt');
+
+    function startMusic() {
+      bgMusic.play().then(() => {
+        soundPrompt.style.opacity = '0';
+        setTimeout(() => soundPrompt.style.display = 'none', 1000);
+      }).catch(() => {});
+    }
+
+    soundPrompt.addEventListener('click', startMusic);
+    document.addEventListener('click', startMusic, { once: true });
+  </script>
 </body>
 </html>
-
