@@ -11,13 +11,44 @@
       padding: 0;
       font-family: 'Special Elite', monospace;
       overflow-x: hidden;
-      background: url('https://raw.githubusercontent.com/Rick-ORick/aa/main/Gp67syWb0AAXLsv.jpeg') no-repeat center center fixed;
-      background-size: cover;
+      background: black;
       color: white;
     }
 
     body {
-      min-height: 300vh;
+      min-height: 320vh;
+      position: relative;
+    }
+
+    /* Background Image with dark overlay */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -3;
+      background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+                  url('https://raw.githubusercontent.com/Rick-ORick/aa/main/Gp67syWb0AAXLsv.jpeg') no-repeat center center fixed;
+      background-size: cover;
+    }
+
+    /* Fog Layer */
+    .fog {
+      pointer-events: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 200%;
+      height: 200%;
+      background: url('https://i.ibb.co/8xwXZFt/fog.png') repeat;
+      opacity: 0.1;
+      animation: fogMove 60s linear infinite;
+      z-index: -2;
+    }
+
+    @keyframes fogMove {
+      0% { transform: translate(0, 0); }
+      100% { transform: translate(-50%, -50%); }
     }
 
     #loading {
@@ -25,6 +56,7 @@
       background: #000;
       color: #C8BDA0;
       font-size: 24px;
+      font-family: 'Special Elite', monospace;
       top: 0; left: 0;
       width: 100%;
       height: 100%;
@@ -41,41 +73,52 @@
       top: 0; left: 0;
       width: 100vw;
       height: 100vh;
-      z-index: 9999;
-      background: radial-gradient(circle at center, transparent 80px, rgba(0, 0, 0, 0.95) 150px);
+      z-index: 9998;
+      background: radial-gradient(circle at center, transparent 80px, rgba(0, 0, 0, 0.96) 150px);
       mix-blend-mode: multiply;
     }
 
-    .content {
-      padding: 40px 20px;
-      line-height: 1.7;
-      font-size: 18px;
-      max-width: 500px;
-      margin: auto;
+    .invisible-space {
+      width: 100%;
+      text-align: center;
     }
 
-    /* Crumpled paper icon fixed at bottom center */
-    .note-trigger {
-      position: fixed;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 10001;
-      cursor: pointer;
-      width: 80px;
+    .green-hint {
+      color: #00ff88;
+      font-size: 16px;
+      display: block;
+      margin-top: 8px;
+    }
+
+    .centered-section {
+      text-align: center;
+      max-width: 300px;
+      margin: 40px auto;
+    }
+
+    .paper-container {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
+
+    .paper-container img {
+      width: 90px;
       height: auto;
+      cursor: pointer;
     }
 
-    /* Modal styles */
     .modal {
       display: none;
       position: fixed;
-      z-index: 10002;
+      z-index: 11000;
       left: 0;
       top: 0;
       width: 100vw;
       height: 100vh;
-      background-color: rgba(0, 0, 0, 0.9);
+      background-color: rgba(0, 0, 0, 0.95);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -95,11 +138,14 @@
       color: #fff;
       cursor: pointer;
       font-weight: bold;
-      z-index: 10003;
+      z-index: 11001;
     }
   </style>
 </head>
 <body class="body" xml:lang="en">
+
+  <!-- Fog -->
+  <div class="fog"></div>
 
   <!-- Loading Screen -->
   <div id="loading">LOADING...</div>
@@ -107,26 +153,38 @@
   <!-- Flashlight Overlay -->
   <div id="overlay"></div>
 
-  <!-- Scrollable Content -->
-  <div class="content">
-    <p>You feel something watching you...</p>
-    <p>The fog gets thicker as you move forward.</p>
-    <p>A whisper echoes in your ear... "Turn back..."</p>
-    <p>But you keep walking.</p>
-    <p>Old notes are pinned to the walls with dried blood.</p>
-    <p>Your heartbeat syncs with the silence.</p>
-    <p>The light is your only friend now.</p>
-    <p>You reach a metal door marked: <strong>"flowers.html"</strong>.</p>
-    <p><a href="flowers.html" style="color: #C8BDA0; text-decoration: underline;">Enter</a></p>
+  <!-- Invisible Scroll Padding -->
+  <div class="invisible-space">
+    <table>
+      <tr><td>
+        <br><br><br><br><br><br><br><br><br><br>
+        <br><br><br><br><br><br><br><br><br><br>
+        <br><br><br><br><br><br><br><br><br><br>
+      </td></tr>
+    </table>
   </div>
 
-  <!-- Crumpled Paper Trigger -->
-  <img src="cr.png" alt="Crumpled Note" class="note-trigger" id="openNote">
+  <!-- Title Section -->
+  <div class="centered-section">
+    <h1>...Where am I?</h1>
+    <span class="green-hint">*Scroll slowly to explore*</span>
+  </div>
 
-  <!-- Modal -->
+  <!-- Crumpled Paper -->
+  <div class="paper-container">
+    <img src="cr.png" alt="Crumpled Note" id="openNote">
+  </div>
+
+  <!-- Below Paper Text -->
+  <div class="centered-section">
+    <h1>Oh what's this?</h1>
+    <span class="green-hint">*Grab it? Yes or no?*</span>
+  </div>
+
+  <!-- Modal for Opened Note -->
   <div class="modal" id="noteModal">
     <span class="modal-close" id="closeNote">&times;</span>
-    <img src="cr-open.png" alt="Open Note">
+    <div id="noteContent"></div>
   </div>
 
   <script>
@@ -141,12 +199,12 @@
       }, 4000);
     });
 
-    // Flashlight stays centered
+    // Flashlight centered logic
     const overlay = document.getElementById('overlay');
     function updateFlashlight() {
       const centerX = window.innerWidth / 2;
       const centerY = window.innerHeight / 2;
-      overlay.style.background = `radial-gradient(circle at ${centerX}px ${centerY}px, transparent 80px, rgba(0, 0, 0, 0.95) 150px)`;
+      overlay.style.background = `radial-gradient(circle at ${centerX}px ${centerY}px, transparent 80px, rgba(0, 0, 0, 0.96) 150px)`;
     }
     updateFlashlight();
     window.addEventListener('scroll', updateFlashlight);
@@ -156,22 +214,26 @@
     const openNote = document.getElementById('openNote');
     const noteModal = document.getElementById('noteModal');
     const closeNote = document.getElementById('closeNote');
+    const noteContent = document.getElementById('noteContent');
 
     openNote.addEventListener('click', () => {
+      noteContent.innerHTML = `<img src="cr-open.png" alt="Opened Note">`;
       noteModal.style.display = 'flex';
     });
 
     closeNote.addEventListener('click', () => {
       noteModal.style.display = 'none';
+      noteContent.innerHTML = '';
     });
 
-    // Click outside to close
     window.addEventListener('click', (e) => {
       if (e.target === noteModal) {
         noteModal.style.display = 'none';
+        noteContent.innerHTML = '';
       }
     });
   </script>
 
 </body>
 </html>
+
