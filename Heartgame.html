@@ -85,6 +85,21 @@
       cursor: pointer;
     }
 
+    #finalImageContainer {
+  display: none;
+  text-align: center;
+  margin-top: 30px;
+  opacity: 0;
+  transition: opacity 2s ease-in;
+}
+
+#finalImageContainer img {
+  max-width: 90%;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+}
+
+
     #unmuteBtn {
       position: fixed;
       bottom: 30px;
@@ -306,6 +321,15 @@
               message.textContent = "You wooooooon! I’m proud of you, my baby girl! 🎉";
               congratsSound.play();
 
+              setTimeout(() => {
+  const finalImageContainer = document.getElementById("finalImageContainer");
+  finalImageContainer.style.display = "block";
+  setTimeout(() => {
+    finalImageContainer.style.opacity = "1";
+  }, 50);
+}, 2000); // show image 2 seconds after win
+
+
               const bestTime = localStorage.getItem('bestTime');
               if (!bestTime || totalTime < bestTime) {
                 localStorage.setItem('bestTime', totalTime);
@@ -353,5 +377,9 @@
 
     startLevel();
   </script>
+  <div id="finalImageContainer">
+  <img src="https://github.com/Rick-ORick/aa/blob/main/InShot_20250710_132633832.gif?raw=true" alt="Gift for You">
+</div>
+
 </body>
 </html>
