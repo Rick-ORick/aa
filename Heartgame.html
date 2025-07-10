@@ -272,8 +272,8 @@
     function createDot(x, y) {
       const dot = document.createElement('div');
       dot.classList.add('dot');
-      dot.style.left = ${x - 10}px;
-      dot.style.top = ${y - 10}px;
+      dot.style.left = `${x - 10}px`;
+      dot.style.top = `${y - 10}px`;
 
       const currentColor = images[currentLevel].color;
       dot.style.backgroundColor = currentColor;
@@ -311,13 +311,13 @@
                 localStorage.setItem('bestTime', totalTime);
               }
 
-              scoreboard.innerHTML += <br><strong>Total Time: ${totalTime}s</strong>;
+              scoreboard.innerHTML += `<br><strong>Total Time: ${totalTime}s</strong>`;
               const stored = localStorage.getItem('bestTime');
-              scoreboard.innerHTML += <br><strong>Your Best Time: ${stored}s</strong>;
+              scoreboard.innerHTML += `<br><strong>Your Best Time: ${stored}s</strong>`;
             }, 2000);
           }
 
-          scoreboard.innerHTML += <div>Level ${currentLevel}: ${reactionTime}s</div>;
+          scoreboard.innerHTML += `<div>Level ${currentLevel}: ${reactionTime}s</div>`;
         }
       });
 
@@ -348,7 +348,7 @@
 
     const storedBest = localStorage.getItem('bestTime');
     if (storedBest) {
-      scoreboard.innerHTML = <strong>Best Time so far: ${storedBest}s</strong>;
+      scoreboard.innerHTML = `<strong>Best Time so far: ${storedBest}s</strong>`;
     }
 
     startLevel();
