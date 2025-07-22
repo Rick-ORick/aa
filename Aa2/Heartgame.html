@@ -1,4 +1,3 @@
-<!-- your full code starts here -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -165,26 +164,14 @@
       position: absolute;
       display: none;
       cursor: pointer;
+      animation: pulseGlow 1.5s infinite ease-in-out;
+      transition: opacity 0.3s ease, transform 0.3s ease;
     }
 
     @keyframes pulseGlow {
-      0% {
-        box-shadow: 0 0 0px rgba(255, 255, 255, 0.5);
-        transform: scale(1);
-      }
-      50% {
-        box-shadow: 0 0 12px rgba(255, 255, 255, 0.8);
-        transform: scale(1.1);
-      }
-      100% {
-        box-shadow: 0 0 0px rgba(255, 255, 255, 0.5);
-        transform: scale(1);
-      }
-    }
-
-    .dot {
-      animation: pulseGlow 1.5s infinite ease-in-out;
-      transition: opacity 0.3s ease, transform 0.3s ease;
+      0% { box-shadow: 0 0 0px rgba(255,255,255,0.5); transform: scale(1); }
+      50% { box-shadow: 0 0 12px rgba(255,255,255,0.8); transform: scale(1.1); }
+      100% { box-shadow: 0 0 0px rgba(255,255,255,0.5); transform: scale(1); }
     }
 
     #message {
@@ -242,17 +229,18 @@
     const congratsSound = document.getElementById('congratsSound');
     const unmuteBtn = document.getElementById('unmuteBtn');
 
-    unmuteBtn.addEventListener('click', () => {
-      bgMusic.muted = false;
-      bgMusic.load();
-      bgMusic.currentTime = 0;
-      bgMusic.volume = 0.5;
-      bgMusic.play().then(() => {
+    unmuteBtn.addEventListener('click', async () => {
+      try {
+        bgMusic.muted = false;
+        bgMusic.currentTime = 0;
+        bgMusic.volume = 0.5;
+        await bgMusic.play();
         unmuteBtn.classList.add('fade-out');
         setTimeout(() => unmuteBtn.remove(), 1000);
-      }).catch(err => {
+      } catch (err) {
         console.error("Autoplay error:", err);
-      });
+        alert("Please click again to allow music to play.");
+      }
     });
 
     const images = [
@@ -368,3 +356,4 @@
   </div>
 </body>
 </html>
+
