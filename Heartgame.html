@@ -231,11 +231,11 @@
     </div>
   </div>
 
-  <!-- Audio Elements YouTube (2).mp3 -->
+  <!-- Audio Elements -->
   <button id="unmuteBtn">🔊 Better experienced with sound</button>
-  <audio id="backgroundMusic" src="aa/zbrah my bouquet of naughty blooms official music video.mp3" loop autoplay muted></audio>
-  <audio id="clickSound" src="aa/select.mp3" preload="auto"></audio>
-  <audio id="congratsSound" src="aa/congrats.mp3" preload="auto"></audio>
+  <audio id="backgroundMusic" src="YouTube (2).mp3" loop autoplay muted></audio>
+  <audio id="clickSound" src="select.mp3" preload="auto"></audio>
+  <audio id="congratsSound" src="congrats.mp3" preload="auto"></audio>
 
   <script>
     function toggleMenu() {
@@ -259,32 +259,22 @@
 
 const images = [
   {
-    name: 'book',
-    color: '#8B4513',
-    points: [
-      [170, 100], [170, 180], [200, 160], [230, 180], [230, 100], // book shape
-      [200, 120], [200, 160] // spine line
-    ],
-    endMessage: "It’s a book. It tells our story! 📖"
+    name: 'flower',
+    color: '#ffb6c1',
+    points: [[200, 150], [170, 120], [200, 90], [230, 120], [200, 150], [200, 210], [200, 270]],
+    endMessage: "It’s a pretty flower like you! 🌸"
   },
   {
-    name: 'city',
-    color: '#2E3A59',
-    points: [
-      [160, 180], [160, 140], [175, 140], [175, 120], [185, 120],
-      [185, 100], [195, 100], [195, 130], [205, 130], [205, 110],
-      [215, 110], [215, 150], [225, 150], [225, 170], [240, 170], [240, 180]
-    ],
-    endMessage: "It’s the skyline of Riyadh. Where I wanna be! 🌆"
+    name: 'teddy',
+    color: '#b5651d',
+    points: [[180, 100], [220, 100], [200, 130], [170, 160], [230, 160], [200, 190], [200, 240]],
+    endMessage: "It’s your teddy bear, Honey Bee! 🧸"
   },
   {
     name: 'heart',
     color: '#ff0000',
-    points: [
-      [200, 120], [180, 100], [160, 120], [160, 160],
-      [200, 200], [240, 160], [240, 120], [220, 100], [200, 120]
-    ],
-    endMessage: "It’s my heart. But you can call it yours! ❤️"
+    points: [[200, 120], [180, 100], [160, 120], [160, 160], [200, 200], [240, 160], [240, 120], [220, 100], [200, 120]],
+    endMessage: "It’s my heart. Take it! It belongs to you! ❤️"
   }
 ];
 
@@ -299,8 +289,8 @@ const images = [
     function createDot(x, y) {
       const dot = document.createElement('div');
       dot.classList.add('dot');
-      dot.style.left = ${x - 10}px;
-      dot.style.top = ${y - 10}px;
+      dot.style.left = `${x - 10}px`;
+      dot.style.top = `${y - 10}px`;
 
       const currentColor = images[currentLevel].color;
       dot.style.backgroundColor = currentColor;
@@ -347,13 +337,13 @@ const images = [
                 localStorage.setItem('bestTime', totalTime);
               }
 
-              scoreboard.innerHTML += <br><strong>Total Time: ${totalTime}s</strong>;
+              scoreboard.innerHTML += `<br><strong>Total Time: ${totalTime}s</strong>`;
               const stored = localStorage.getItem('bestTime');
-              scoreboard.innerHTML += <br><strong>Your Best Time: ${stored}s</strong>;
+              scoreboard.innerHTML += `<br><strong>Your Best Time: ${stored}s</strong>`;
             }, 2000);
           }
 
-          scoreboard.innerHTML += <div>Level ${currentLevel}: ${reactionTime}s</div>;
+          scoreboard.innerHTML += `<div>Level ${currentLevel}: ${reactionTime}s</div>`;
         }
       });
 
@@ -384,13 +374,13 @@ const images = [
 
     const storedBest = localStorage.getItem('bestTime');
     if (storedBest) {
-      scoreboard.innerHTML = <strong>Best Time so far: ${storedBest}s</strong>;
+      scoreboard.innerHTML = `<strong>Best Time so far: ${storedBest}s</strong>`;
     }
 
     startLevel();
   </script>
   <div id="finalImageContainer">
-  <img src="https://github.com/Rick-ORick/aa/blob/main/516918913_18063267518242767_1538806234765265751_n.webp.jpg?raw=true" alt="Gift for You">
+  <img src="https://raw.githubusercontent.com/Rick-ORick/aa/6b7fcb3514d6d920ea59b4e8438e1c204916fcfe/tog.jpg" alt="Gift for You">
 </div>
 
 </body>
