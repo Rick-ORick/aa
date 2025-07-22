@@ -1,3 +1,4 @@
+<!-- your full code starts here -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -86,19 +87,18 @@
     }
 
     #finalImageContainer {
-  display: none;
-  text-align: center;
-  margin-top: 30px;
-  opacity: 0;
-  transition: opacity 2s ease-in;
-}
+      display: none;
+      text-align: center;
+      margin-top: 30px;
+      opacity: 0;
+      transition: opacity 2s ease-in;
+    }
 
-#finalImageContainer img {
-  max-width: 90%;
-  border-radius: 12px;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
-}
-
+    #finalImageContainer img {
+      max-width: 90%;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+    }
 
     #unmuteBtn {
       position: fixed;
@@ -168,31 +168,24 @@
     }
 
     @keyframes pulseGlow {
-  0% {
-    box-shadow: 0 0 0px rgba(255, 255, 255, 0.5);
-    transform: scale(1);
-  }
-  50% {
-    box-shadow: 0 0 12px rgba(255, 255, 255, 0.8);
-    transform: scale(1.1);
-  }
-  100% {
-    box-shadow: 0 0 0px rgba(255, 255, 255, 0.5);
-    transform: scale(1);
-  }
-}
+      0% {
+        box-shadow: 0 0 0px rgba(255, 255, 255, 0.5);
+        transform: scale(1);
+      }
+      50% {
+        box-shadow: 0 0 12px rgba(255, 255, 255, 0.8);
+        transform: scale(1.1);
+      }
+      100% {
+        box-shadow: 0 0 0px rgba(255, 255, 255, 0.5);
+        transform: scale(1);
+      }
+    }
 
-.dot {
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  position: absolute;
-  display: none;
-  cursor: pointer;
-  animation: pulseGlow 1.5s infinite ease-in-out;
-  transition: opacity 0.3s ease, transform 0.3s ease;
-}
-
+    .dot {
+      animation: pulseGlow 1.5s infinite ease-in-out;
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
 
     #message {
       font-size: 1.3em;
@@ -207,7 +200,6 @@
     }
   </style>
 </head>
-
 <body>
   <div class="page-wrapper">
     <nav>
@@ -233,7 +225,7 @@
 
   <!-- Audio Elements YouTube (2).mp3 -->
   <button id="unmuteBtn">🔊 Better experienced with sound</button>
-  <audio id="backgroundMusic" src="zbrah my bouquet of naughty blooms official music video.mp3" loop autoplay muted></audio>
+  <audio id="backgroundMusic" src="https://github.com/Rick-ORick/aa/raw/main/zbrah_bouquet.mp3" loop autoplay muted></audio>
   <audio id="clickSound" src="select.mp3" preload="auto"></audio>
   <audio id="congratsSound" src="congrats.mp3" preload="auto"></audio>
 
@@ -252,43 +244,37 @@
 
     unmuteBtn.addEventListener('click', () => {
       bgMusic.muted = false;
-      bgMusic.play().catch(() => {});
-      unmuteBtn.classList.add('fade-out');
-      setTimeout(() => unmuteBtn.remove(), 1000);
+      bgMusic.load();
+      bgMusic.currentTime = 0;
+      bgMusic.volume = 0.5;
+      bgMusic.play().then(() => {
+        unmuteBtn.classList.add('fade-out');
+        setTimeout(() => unmuteBtn.remove(), 1000);
+      }).catch(err => {
+        console.error("Autoplay error:", err);
+      });
     });
 
-const images = [
-  {
-    name: 'book',
-    color: '#8B4513',
-    points: [
-      [170, 100], [170, 180], [200, 160], [230, 180], [230, 100], // book shape
-      [200, 120], [200, 160] // spine line
-    ],
-    endMessage: "It’s a book. It tells our story! 📖"
-  },
-  {
-    name: 'city',
-    color: '#2E3A59',
-    points: [
-      [160, 180], [160, 140], [175, 140], [175, 120], [185, 120],
-      [185, 100], [195, 100], [195, 130], [205, 130], [205, 110],
-      [215, 110], [215, 150], [225, 150], [225, 170], [240, 170], [240, 180]
-    ],
-    endMessage: "It’s the skyline of Riyadh. Where I wanna be! 🌆"
-  },
-  {
-    name: 'heart',
-    color: '#ff0000',
-    points: [
-      [200, 120], [180, 100], [160, 120], [160, 160],
-      [200, 200], [240, 160], [240, 120], [220, 100], [200, 120]
-    ],
-    endMessage: "It’s my heart. But you can call it yours! ❤️"
-  }
-];
-
-
+    const images = [
+      {
+        name: 'book',
+        color: '#8B4513',
+        points: [[170, 100], [170, 180], [200, 160], [230, 180], [230, 100], [200, 120], [200, 160]],
+        endMessage: "It’s a book. It tells our story! 📖"
+      },
+      {
+        name: 'city',
+        color: '#2E3A59',
+        points: [[160, 180], [160, 140], [175, 140], [175, 120], [185, 120], [185, 100], [195, 100], [195, 130], [205, 130], [205, 110], [215, 110], [215, 150], [225, 150], [225, 170], [240, 170], [240, 180]],
+        endMessage: "It’s the skyline of Riyadh. Where I wanna be! 🌆"
+      },
+      {
+        name: 'heart',
+        color: '#ff0000',
+        points: [[200, 120], [180, 100], [160, 120], [160, 160], [200, 200], [240, 160], [240, 120], [220, 100], [200, 120]],
+        endMessage: "It’s my heart. But you can call it yours! ❤️"
+      }
+    ];
 
     let currentLevel = 0;
     let currentDotIndex = 0;
@@ -301,17 +287,13 @@ const images = [
       dot.classList.add('dot');
       dot.style.left = `${x - 10}px`;
       dot.style.top = `${y - 10}px`;
-
       const currentColor = images[currentLevel].color;
       dot.style.backgroundColor = currentColor;
-
       dot.addEventListener('click', () => {
         dot.style.display = 'block';
         dot.style.pointerEvents = 'none';
-
         clickSound.currentTime = 0;
         clickSound.play();
-
         currentDotIndex++;
         if (currentDotIndex < images[currentLevel].points.length) {
           showNextDot();
@@ -320,7 +302,6 @@ const images = [
           const reactionTime = Math.round((endTime - startTime) / 1000);
           times.push(reactionTime);
           message.textContent = images[currentLevel].endMessage;
-
           currentLevel++;
           if (currentLevel < images.length) {
             setTimeout(() => {
@@ -332,31 +313,25 @@ const images = [
               const totalTime = times.reduce((a, b) => a + b);
               message.textContent = "You wooooooon! I’m proud of you, my baby girl! 🎉";
               congratsSound.play();
-
               setTimeout(() => {
-  const finalImageContainer = document.getElementById("finalImageContainer");
-  finalImageContainer.style.display = "block";
-  setTimeout(() => {
-    finalImageContainer.style.opacity = "1";
-  }, 50);
-}, 2000); // show image 2 seconds after win
-
-
+                const finalImageContainer = document.getElementById("finalImageContainer");
+                finalImageContainer.style.display = "block";
+                setTimeout(() => {
+                  finalImageContainer.style.opacity = "1";
+                }, 50);
+              }, 2000);
               const bestTime = localStorage.getItem('bestTime');
               if (!bestTime || totalTime < bestTime) {
                 localStorage.setItem('bestTime', totalTime);
               }
-
               scoreboard.innerHTML += `<br><strong>Total Time: ${totalTime}s</strong>`;
               const stored = localStorage.getItem('bestTime');
               scoreboard.innerHTML += `<br><strong>Your Best Time: ${stored}s</strong>`;
             }, 2000);
           }
-
           scoreboard.innerHTML += `<div>Level ${currentLevel}: ${reactionTime}s</div>`;
         }
       });
-
       gameArea.appendChild(dot);
       dots.push(dot);
     }
@@ -370,10 +345,8 @@ const images = [
       message.textContent = '';
       currentDotIndex = 0;
       dots = [];
-
       const points = images[currentLevel].points;
       points.forEach(([x, y]) => createDot(x, y));
-
       showNextDot();
       startTime = Date.now();
     }
@@ -389,9 +362,9 @@ const images = [
 
     startLevel();
   </script>
-  <div id="finalImageContainer">
-  <img src="https://github.com/Rick-ORick/aa/blob/main/516918913_18063267518242767_1538806234765265751_n.webp.jpg?raw=true" alt="Gift for You">
-</div>
 
+  <div id="finalImageContainer">
+    <img src="https://github.com/Rick-ORick/aa/blob/main/516918913_18063267518242767_1538806234765265751_n.webp.jpg?raw=true" alt="Gift for You">
+  </div>
 </body>
 </html>
